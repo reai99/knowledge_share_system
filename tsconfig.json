@@ -2,20 +2,23 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
-    "experimentalDecorators": true,
     "skipLibCheck": true,
+    "experimentalDecorators": true,
     "esModuleInterop": true,
+    "strictNullChecks": true, //参数会被自动地加上 | undefined
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "mocha",
+      "chai"
     ],
-    "paths": {
+    "paths": {   // 路径映射
       "@/*": [
         "src/*"
       ]
@@ -25,7 +28,8 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ]
+    ],
+    "rootDirs": []  //定了一个roots列表，列表里的内容会在运行时被合并
   },
   "include": [
     "src/**/*.ts",
