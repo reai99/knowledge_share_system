@@ -45,7 +45,7 @@ module.exports = {
   //     "/api": {
   //       target: process.env.VUE_APP_ApiUrl, // 需要请求的地址
   //       changeOrigin: true, // 是否跨域
-  //       ws: true,
+  //       ws: true,  
   //       pathRewrite: {
   //         "^/api": "",
   //       },

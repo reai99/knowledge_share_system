@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-form
+    <el-form
       :model="loginForm"
       :rules="rules"
       ref="loginForm"
@@ -8,49 +8,61 @@
     >
       <div class="title-container">
         <h3 class="title">
-          系统登陆
+          {{ $t("login.title") }}
         </h3>
+        <select-lang
+          class="set-language"
+          :contentStyle="selectLangStyle"
+        ></select-lang>
       </div>
 
-      <a-form-item prop="username">
-        <a-input v-model="loginForm.username" autocomplete="off" allow-clear>
-          <span class="svg-container" slot="prefix">
-            <svg-icon name="user" />
-          </span>
-        </a-input>
-      </a-form-item>
-      <a-form-item prop="password">
-        <a-input-password
+      <el-form-item prop="username">
+        <span class="svg-container">
+          <svg-icon name="user" />
+        </span>
+        <el-input
+          v-model="loginForm.username"
+          autocomplete="off"
+          :placeholder="$t('login.username')"
+          clearable
+        ></el-input>
+      </el-form-item>
+      <el-form-item prop="password">
+        <span class="svg-container">
+          <svg-icon name="password" />
+        </span>
+        <el-input
           type="password"
           v-model="loginForm.password"
+          :placeholder="$t('login.password')"
           autocomplete="off"
-        >
-          <span class="svg-container" slot="prefix">
-            <svg-icon name="password" />
-          </span>
-        </a-input-password>
-      </a-form-item>
-      <a-form-item>
-        <a-button
+          show-password
+        ></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button
+          v-waves
           type="primary"
           @click="submitForm"
           style="width: 100%"
           :loading="loginStatus"
         >
-          登陆
-        </a-button>
-      </a-form-item>
-    </a-form>
+          {{ $t("login.logIn") }}
+        </el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
 import { Component, Vue } from "vue-property-decorator";
 import { isValidUsername } from "@/utils/validate";
 
 @Component({
   name: "Login",
-  components: {}
+  components: {
+    selectLang: () => import("@/common/components/SetLanguage/index.vue")
+  }
 })
 export default class extends Vue {
   private selectLangStyle = {
@@ -58,7 +70,7 @@ export default class extends Vue {
     bgColor: ""
   };
   private loginStatus = false;
-  private validateUsername = (rule, value: string, callback: Function) => {
+  private validateUsername = (rule: any, value: string, callback: Function) => {
     if (!isValidUsername(value)) {
       callback(new Error("Please enter the correct user name"));
     } else {
@@ -66,7 +78,7 @@ export default class extends Vue {
     }
   };
 
-  private validatePassword = (rule, value: string, callback: Function) => {
+  private validatePassword = (rule: any, value: string, callback: Function) => {
     if (value.length < 6) {
       callback(new Error("The password can not be less than 6 digits"));
     } else {
@@ -82,7 +94,26 @@ export default class extends Vue {
     password: ""
   };
   private submitForm() {
-    console.log("ok");
+    (this.$refs.loginForm as any).validate(valid => {
+      if (valid) {
+        if (!this.loginStatus) {
+          this.loginStatus = true;
+        }
+        (this as any).$axios.post("/api/login", this.loginForm).then(res => {
+          if (res && res.ok) {
+            window.localStorage.setItem("token", res.data.token);
+            this.loginStatus = false
+            this.$message.success("登录成功");
+            this.$router.push({ name: "dashboard" });
+          } else {
+            this.$message.error(res.error || "操作错误,请稍后重试");
+          }
+        });
+      } else {
+        this.$message.error("信息验证不通过");
+        return false;
+      }
+    });
   }
 }
 </script>
@@ -115,44 +146,38 @@ export default class extends Vue {
     box-shadow: 0 0 36px rgba(255, 255, 255, 0.15);
     padding: 20px 25px;
     border-radius: 8px;
-    /deep/ .a-form-item {
+    /deep/ .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.1);
       border-radius: 5px;
       color: #454545;
     }
 
-    /deep/ .ant-input-affix-wrapper {
-      width: 100%;
+    /deep/ .el-input {
+      width: 85%;
       height: 46px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
       input {
-        padding-left: 35px;
         height: 46px;
         background: transparent;
         border: 0px;
         border-radius: 0px;
+        padding: 12px 0px;
         color: #eee;
         caret-color: #eee;
         -webkit-appearance: none;
+
         &:-webkit-autofill {
           box-shadow: 0 0 0px 1000px #292950 inset !important;
           -webkit-text-fill-color: #fff !important;
         }
-        &:focus {
-          border-radius: 4px;
-          height: 44px;
-        }
       }
     }
-
     .svg-container {
       fill: #889aa4;
       vertical-align: middle;
+      width: 40px;
       text-align: center;
       display: inline-block;
-      height: 14px;
     }
   }
 
@@ -164,6 +189,14 @@ export default class extends Vue {
       margin: 10px auto 30px auto;
       text-align: center;
       font-weight: bold;
+    }
+    .set-language {
+      color: #fff;
+      position: absolute;
+      top: 3px;
+      font-size: 18px;
+      right: 0px;
+      cursor: pointer;
     }
   }
 }
