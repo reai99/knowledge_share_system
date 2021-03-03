@@ -50,7 +50,8 @@ export default class extends Vue {
 .hasTagsView {
   .app-main {
     /* 84 = navbar + tags-view = 50 + 34 */
-    min-height: calc(100vh - 84px);
+    min-height: calc(100vh - 85px);
+    box-sizing: border-box;
   }
 
   .fixed-header+.app-main {

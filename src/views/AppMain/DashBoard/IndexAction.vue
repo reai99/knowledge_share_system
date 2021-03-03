@@ -51,6 +51,6 @@ export default class extends Vue {
   padding: 10px;
   box-sizing: border-box;
   background: #f6f6f6;
-  min-height: 100vh;
+  min-height: calc(100vh - 85px);
 }
 </style>

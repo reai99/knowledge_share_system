@@ -6,7 +6,7 @@ module.exports = {
   extends: [
     'plugin:vue/essential',
     // '@vue/standard',
-    // 'eslint:recommended',
+    'eslint:recommended',
     '@vue/typescript/recommended'
   ],
   parserOptions: {
@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    "camelcase": ["error", {"allow": ["aa_bb"]}]
   },
   overrides: [
     {

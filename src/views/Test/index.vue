@@ -1,7 +1,5 @@
 <template>
-  <div>
-    基本设置页面
-  </div>
+  <div>00000000000</div>
 </template>
 
 <script>

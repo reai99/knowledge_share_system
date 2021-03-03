@@ -24,11 +24,11 @@ export const constantRoutes: Array<RouteConfig> = [
         }
       },
       {
-        path: '/basicmassage',
-        name: 'basicmassage',
-        component: () => import(/* webpackChunkName: "HomeChild" */ '@/views/AppMain/BasicConfig/IndexAction.vue'),
+        path: '/articletype',
+        name: 'articletype',
+        component: () => import(/* webpackChunkName: "HomeChild" */ '@/views/AppMain/ArticleType/IndexAction.vue'),
         meta: {
-          title: 'basicmassage',
+          title: 'articletype',
           icon: 'documentation'
         }
       },
@@ -36,7 +36,7 @@ export const constantRoutes: Array<RouteConfig> = [
         path: '/article',
         name: 'article',
         redirect: '/article/artlist',
-        component: () => import(/* webpackChunkName: "HomeChild" */ '@/views/AppMain/ArticleAdmin/IndexAction.vue'),
+        component: () => import(/* webpackChunkName: "Article" */ '@/views/AppMain/ArticleAdmin/IndexAction.vue'),
         meta: {
           title: 'articleAdmin',
           icon: 'tree-table',
@@ -46,181 +46,24 @@ export const constantRoutes: Array<RouteConfig> = [
           {
             path: 'artlist',
             name: 'artlist',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
+            component: () => import(/* webpackChunkName: "ArticleList" */ '@/views/AppMain/ArticleAdmin/IndexAction.vue'),
             meta: {
-              title: 'artlist'
+              title: 'artlist',
+              noCache: true
             }
           },
           {
             path: 'artcreate',
             name: 'artcreate',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
+            component: () => import(/* webpackChunkName: "ArticleCreate" */ '@/views/AppMain/ArticleCreate/IndexAction.vue'),
             meta: {
-              title: 'artcreate'
-            }
-          },
-          {
-            path: 'artlabel',
-            name: 'artlabel',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-            meta: {
-              title: 'artlabel'
-            }
-          },
-          {
-            path: 'arttype',
-            name: 'arttype',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-            meta: {
-              title: 'arttype'
+              title: 'artcreate',
+              noCache: true
             }
           }
         ]
-      },
-      {
-        path: 'setmenubar',
-        name: 'setmenubar',
-        component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-        meta: {
-          title: 'setmenubar',
-          icon: 'nested'
-        }
-      },
-      {
-        path: 'useradmin',
-        name: 'useradmin',
-        component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-        meta: {
-          title: 'useradmin',
-          icon: 'user'
-        }
-      },
-      {
-        path: 'customtlayout',
-        name: 'customtlayout',
-        component: () => import(/* webpackChunkName: "CustomLayout" */  '@/views/AppMain/CustomLayout/DashBoard/IndexAction.vue'),
-        meta: {
-          title: 'customtlayout',
-          icon: 'example',
-          alwaysShow: true,
-        },
-        children: [
-          {
-            path: 'custompanel',
-            name: 'custompanel',
-            component: () => import(/* webpackChunkName: "CustomLayoutDashBoard" */ '@/views/AppMain/CustomLayout/DashBoard/IndexAction.vue'),
-            meta: {
-              title: 'custompanel'
-            }
-          },
-          {
-            path: 'moudleadmin',
-            name: 'moudleadmin',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-            meta: {
-              title: 'moudleadmin'
-            }
-          },
-          {
-            path: 'customtemplate',
-            name: 'customtemplate',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-            meta: {
-              title: 'customtemplate'
-            }
-          },
-          {
-            path: 'templatebase',
-            name: 'templatebase',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-            meta: {
-              title: 'templatebase'
-            }
-          },
-        ]
-      },
-      //  二级菜单
-      {
-        path: '/permission',
-        name: 'permission',
-        redirect: '/permission/moudle',
-        component: () => import(/* webpackChunkName: "HomeChild" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-        meta: {
-          title: 'permissionAdmin',
-          icon: 'lock',
-          alwaysShow: true,
-        },
-        children: [
-          {
-            path: 'moudle',
-            name: 'moudle',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-            meta: {
-              title: 'moudlepermission'
-            }
-          },
-          {
-            path: 'page',
-            name: 'pagePermission',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-            meta: {
-              title: 'pagePermission'
-            }
-          },
-          {
-            path: 'user',
-            name: 'user',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-            meta: {
-              title: 'userpermission'
-            }
-          }
-        ]
-      },
-      {
-        path: 'basicconfig',
-        name: 'basicconfig',
-        component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-        meta: {
-          title: 'basicconfig',
-          icon: 'tree',
-          alwaysShow: true,
-        },
-        children: [
-          {
-            path: 'customfield',
-            name: 'customfield',
-            component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-            meta: {
-              title: 'customfield'
-            }
-          }
-        ]
-      },
-      {
-        path: 'statisticalchart',
-        name: 'statisticalchart',
-        component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-        meta: {
-          title: 'statisticalchart',
-          icon: 'chart'
-        }
-      },
-      {
-        path: 'operationlog',
-        name: 'operationlog',
-        component: () => import(/* webpackChunkName: "HomeChildPermission" */ '@/views/AppMain/Permission/AuthAdmin/IndexAction.vue'),
-        meta: {
-          title: 'operationlog',
-          icon: 'clipboard'
-        }
       }
     ]
-  },
-  {
-    path: '/test',
-    name: 'test',
-    component: () => import(/* webpackChunkName: "Test" */ '@/views/Test/IndexAction.vue')
   },
   {
     path: '/login',
@@ -237,7 +80,7 @@ export const constantRoutes: Array<RouteConfig> = [
     redirect: '/404'
   }
 ]
-// const asyncRoutes: RouteConfig[] = []
+
 
 const createRouter = () => new VueRouter({
   scrollBehavior(to, from, savedPosition) {
@@ -259,6 +102,7 @@ export function resetRouter() {
   const newRouter = createRouter();
   (router as any).matcher = (newRouter as any).matcher
 }
+
 router.beforeEach((to: Route, _: Route, next: any) => {
   NProgress.start()
   if (window.localStorage.getItem('token')) {

@@ -1,7 +1,7 @@
 export default {
   route: {
     controlpanel: '控制台',
-    basicmassage: '基本信息',
+    articletype: '文章分类',
     articleAdmin: '文章管理',
     artlist: '文章列表',
     artcreate: '文章创建',
