@@ -1,31 +1,26 @@
 module.exports = {
-  root: true,
   env: {
-    node: true
+    browser: true,
+    es2020: true,
   },
-  extends: [
-    'plugin:vue/essential',
-    // '@vue/standard',
-    'eslint:recommended',
-    '@vue/typescript/recommended'
-  ],
-  parserOptions: {
-    ecmaVersion: 2020
-  },
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    "camelcase": ["error", {"allow": ["aa_bb"]}]
-  },
-  overrides: [
-    {
-      files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)'
-      ],
-      env: {
-        jest: true
-      }
-    }
-  ]
+  // extends: [
+  //   'plugin:vue/essential',
+  //   'standard',
+  // ],
+  // parserOptions: {
+  //   ecmaVersion: 11,
+  //   parser: '@typescript-eslint/parser',
+  //   sourceType: 'module',
+  // },
+  // plugins: [
+  //   'vue',
+  //   '@typescript-eslint',
+  // ],
+  // rules: {
+  //   'lines-between-class-members': 0,
+  //   'space-before-function-paren': ['error', 'never'],
+  //   'comma-dangle': ['error', 'always-multiline'],
+  //   'operator-linebreak': ['error', 'before'],
+  //   semi: ['error', 'never'],
+  // },
 }

@@ -67,31 +67,31 @@ import { isValidUsername } from "@/utils/validate";
 export default class extends Vue {
   private selectLangStyle = {
     icoColor: "#fff",
-    bgColor: ""
+    bgColor: "",
   };
   private loginStatus = false;
   private validateUsername = (rule: any, value: string, callback: Function) => {
     if (!isValidUsername(value)) {
-      callback(new Error("Please enter the correct user name"));
+      callback(new Error("Please enter the correct user name"))
     } else {
-      callback();
+      callback()
     }
   };
 
   private validatePassword = (rule: any, value: string, callback: Function) => {
     if (value.length < 6) {
-      callback(new Error("The password can not be less than 6 digits"));
+      callback(new Error("The password can not be less than 6 digits"))
     } else {
-      callback();
+      callback()
     }
   };
   private rules = {
     password: [{ validator: this.validatePassword, trigger: "blur" }],
-    username: [{ validator: this.validateUsername, trigger: "blur" }]
+    username: [{ validator: this.validateUsername, trigger: "blur" }],
   };
   private loginForm = {
     username: "",
-    password: ""
+    password: "",
   };
   private submitForm() {
     (this.$refs.loginForm as any).validate(valid => {
@@ -101,19 +101,19 @@ export default class extends Vue {
         }
         (this as any).$axios.post("/api/login", this.loginForm).then(res => {
           if (res && res.ok) {
-            window.localStorage.setItem("token", res.data.token);
+            window.localStorage.setItem("token", res.data.token)
             this.loginStatus = false
-            this.$message.success("登录成功");
-            this.$router.push({ name: "dashboard" });
+            this.$message.success("登录成功")
+            this.$router.push({ name: "dashboard" })
           } else {
-            this.$message.error(res.error || "操作错误,请稍后重试");
+            this.$message.error(res.error || "操作错误,请稍后重试")
           }
         });
       } else {
-        this.$message.error("信息验证不通过");
-        return false;
+        this.$message.error("信息验证不通过")
+        return false
       }
-    });
+    })
   }
 }
 </script>

@@ -7,6 +7,7 @@ export default {
     artcreate: '文章创建',
     artlabel: '文章标签',
     arttype: '文章类型',
+    mindcreate: '思维导图',
     setmenubar: '菜单栏设置',
     useradmin: '用户管理',
     permissionAdmin: '权限管理',

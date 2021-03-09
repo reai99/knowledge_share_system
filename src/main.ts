@@ -6,6 +6,9 @@ import * as directives from '@/common/directives'
 import * as filter from '@/common/filter'
 import i18n from '@/common/lang'
 
+import VueMindmap from 'vue-mindmap'
+import 'vue-mindmap/dist/vue-mindmap.css'
+
 // 公共样式
 import "@/assets/css/common.css"
 // http
@@ -34,6 +37,9 @@ Vue.use(SvgIcon, {
   defaultWidth: '1em',
   defaultHeight: '1em'
 })
+
+// mind思维导图
+Vue.use(VueMindmap)
 
 // 模拟数据接口
 if(process.env.NODE_ENV === 'development') {

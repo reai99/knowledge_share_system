@@ -16,7 +16,8 @@
     "types": [
       "webpack-env",
       "mocha",
-      "chai"
+      "chai",
+      "resize-observer-browser"
     ],
     "paths": {   // 路径映射
       "@/*": [

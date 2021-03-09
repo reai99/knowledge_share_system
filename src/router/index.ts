@@ -33,10 +33,19 @@ export const constantRoutes: Array<RouteConfig> = [
         }
       },
       {
+        path: '/mindcreate',
+        name: 'mindcreate',
+        component: () => import(/* webpackChunkName: "HomeChild" */ '@/views/AppMain/CreateMind/IndexAction.vue'),
+        meta: {
+          title: 'mindcreate',
+          icon: 'documentation'
+        }
+      },
+      {
         path: '/article',
         name: 'article',
         redirect: '/article/artlist',
-        component: () => import(/* webpackChunkName: "Article" */ '@/views/AppMain/ArticleAdmin/IndexAction.vue'),
+        component: () => import(/* webpackChunkName: "Article" */ '@/common/components/RouterView/IndexAction.vue'),
         meta: {
           title: 'articleAdmin',
           icon: 'tree-table',
@@ -46,7 +55,7 @@ export const constantRoutes: Array<RouteConfig> = [
           {
             path: 'artlist',
             name: 'artlist',
-            component: () => import(/* webpackChunkName: "ArticleList" */ '@/views/AppMain/ArticleAdmin/IndexAction.vue'),
+            component: () => import(/* webpackChunkName: "ArticleList" */ '@/views/AppMain/ArticleList/IndexAction.vue'),
             meta: {
               title: 'artlist',
               noCache: true
