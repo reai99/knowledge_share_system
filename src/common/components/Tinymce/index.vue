@@ -77,8 +77,8 @@ const defaultId = () => 'vue-tinymce-' + +new Date() + ((Math.random() * 1000).t
   name: 'Tinymce',
   components: {
     EditorImageUpload,
-    TinymceEditor
-  }
+    TinymceEditor,
+  },
 })
 export default class extends Vue {
   @Prop({ required: true }) private value!: string
@@ -136,10 +136,7 @@ export default class extends Vue {
       imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
       default_link_target: '_blank',
       link_title: false,
-      // inserting nonbreaking space &nbsp; need Nonbreaking Space Plugin
       nonbreaking_force_tab: true,
-      // https://www.tiny.cloud/docs-3x/reference/configuration/Configuration3x@convert_urls/
-      // https://stackoverflow.com/questions/5196205/disable-tinymce-absolute-to-relative-url-conversions
       convert_urls: false,
       init_instance_callback: (editor) => {
         if (this.value) {
@@ -155,7 +152,7 @@ export default class extends Vue {
         editor.on('FullscreenStateChanged', e => {
           this.fullscreen = e.state
         })
-      }
+      },
     }
   }
 

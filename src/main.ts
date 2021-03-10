@@ -35,7 +35,7 @@ Object.keys(filter).forEach(key => {
 Vue.use(SvgIcon, {
   tagName: 'svg-icon',
   defaultWidth: '1em',
-  defaultHeight: '1em'
+  defaultHeight: '1em',
 })
 
 // mind思维导图
@@ -54,5 +54,5 @@ new Vue({
   router,
   store,
   i18n,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app')

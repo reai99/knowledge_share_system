@@ -2,7 +2,12 @@
   <div ref="mindmap" id="mindmap" :style="mmStyle">
     <svg ref="svg" tabindex="0" :class="svgClass">
       <g ref="content" id="content" ></g>
-      <rect v-show="showSelectedBox" id="selectedBox" ref='selectedBox' :width='seleBox.width' :height='seleBox.height'
+      <rect 
+        v-show="showSelectedBox" 
+        id="selectedBox" 
+        ref='selectedBox' 
+        :width='seleBox.width' 
+        :height='seleBox.height'
         :transform="`translate(${seleBox.x},${seleBox.y})`"
       ></rect>
     </svg>
@@ -88,38 +93,58 @@ let mmdata: ImData // 思维导图数据
   name: "MindMap",
 })
 export default class MindMap extends Vue {
+  // 容器宽度
   @Prop() width: number | undefined
+  // 容器高度
   @Prop() height: number | undefined
+  // x方向距离
   @Prop({ default: 50 }) xSpacing!: number
+  // y 方向距离
   @Prop({ default: 20 }) ySpacing!: number
+  // 拖拽功能
   @Prop({ default: true }) draggable!: boolean
+  // 定位功能
   @Prop({ default: true }) gps!: boolean
+  //填充预览
   @Prop({ default: true }) fitView!: boolean
+  // 是否支持下载
   @Prop({ default: true }) download!: boolean
+  // 按键控制
   @Prop({ default: true }) keyboard!: boolean
+  // 是否可以新增节点
   @Prop({ default: true }) showNodeAdd!: boolean
+  // 弹出菜单
   @Prop({ default: true }) contextMenu!: boolean
+  // 放大缩小是能
   @Prop({ default: true }) zoomable!: boolean
   @Prop({ default: true }) showUndo!: boolean
+  // 边框宽度
   @Prop({ default: 4 }) strokeWidth!: number
+  
   @Model('change', { required: true }) value!: Array<Data>
 
   @Watch('keyboard')
   onKeyboardChanged(val: boolean) { this.makeKeyboard(val) }
+
   @Watch('showNodeAdd')
   onShowNodeAddChanged(val: boolean) { this.makeNodeAdd(val) }
+
   @Watch('draggable')
   onDraggableChanged(val: boolean) { this.makeDrag(val) }
+
   @Watch('contextMenu')
   onContextMenuChanged(val: boolean) { this.makeContextMenu(val) }
+
   @Watch('xSpacing')
   onXSpacingChanged() {
     mmdata.resize()
     this.updateMmdata()
     this.updateMindmap()
   }
+
   @Watch('ySpacing')
   onYSpacingChanged() { this.updateMindmap() }
+
   @Watch('zoomable')
   onZoomableChanged(val: boolean) { this.makeZoom(val) }
 
@@ -343,10 +368,9 @@ export default class MindMap extends Vue {
     await d3.transition().end().then(() => {
       const rect = (this.$refs.content as SVGGElement).getBBox()
       const div = this.$refs.mindmap
-      const multipleX = div.offsetWidth / rect.width
-      const multipleY = div.offsetHeight / rect.height
+      const multipleX = div.offsetWidth / (rect.width *2)
+      const multipleY = div.offsetHeight / (rect.height*2)
       const multiple = Math.min(multipleX, multipleY)
-
       this.mindmapSvg.transition(this.easePolyInOut as any).call(this.zoom.scaleTo, multiple)
     })
   }
@@ -1064,5 +1088,6 @@ export default class MindMap extends Vue {
   #mindmap {
     height: 100%;
     height:100vh;
+    overflow: auto;
   }
 </style>

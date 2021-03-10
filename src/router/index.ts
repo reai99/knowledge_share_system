@@ -20,8 +20,8 @@ export const constantRoutes: Array<RouteConfig> = [
         meta: {
           title: 'controlpanel',
           icon: 'dashboard',
-          affix: true  //黏性菜单，不会被移除
-        }
+          affix: true,  //黏性菜单，不会被移除
+        },
       },
       {
         path: '/articletype',
@@ -29,8 +29,8 @@ export const constantRoutes: Array<RouteConfig> = [
         component: () => import(/* webpackChunkName: "HomeChild" */ '@/views/AppMain/ArticleType/IndexAction.vue'),
         meta: {
           title: 'articletype',
-          icon: 'documentation'
-        }
+          icon: 'documentation',
+        },
       },
       {
         path: '/mindcreate',
@@ -38,8 +38,8 @@ export const constantRoutes: Array<RouteConfig> = [
         component: () => import(/* webpackChunkName: "HomeChild" */ '@/views/AppMain/CreateMind/IndexAction.vue'),
         meta: {
           title: 'mindcreate',
-          icon: 'documentation'
-        }
+          icon: 'documentation',
+        },
       },
       {
         path: '/article',
@@ -58,8 +58,8 @@ export const constantRoutes: Array<RouteConfig> = [
             component: () => import(/* webpackChunkName: "ArticleList" */ '@/views/AppMain/ArticleList/IndexAction.vue'),
             meta: {
               title: 'artlist',
-              noCache: true
-            }
+              noCache: true,
+            },
           },
           {
             path: 'artcreate',
@@ -67,27 +67,27 @@ export const constantRoutes: Array<RouteConfig> = [
             component: () => import(/* webpackChunkName: "ArticleCreate" */ '@/views/AppMain/ArticleCreate/IndexAction.vue'),
             meta: {
               title: 'artcreate',
-              noCache: true
-            }
-          }
-        ]
-      }
-    ]
+              noCache: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "Login" */ '@/views/Login/IndexAction.vue')
+    component: () => import(/* webpackChunkName: "Login" */ '@/views/Login/IndexAction.vue'),
   },
   {
     path: '/404',
     name: 'error404',
-    component: () => import(/* webpackChunkName: "errorPage-404" */ '@/views/Error/404.vue')
+    component: () => import(/* webpackChunkName: "errorPage-404" */ '@/views/Error/404.vue'),
   },
   {
     path: '*',
-    redirect: '/404'
-  }
+    redirect: '/404',
+  },
 ]
 
 
@@ -101,7 +101,7 @@ const createRouter = () => new VueRouter({
   },
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: constantRoutes
+  routes: constantRoutes,
 })
 
 const router = createRouter()
