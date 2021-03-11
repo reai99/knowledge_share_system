@@ -36,8 +36,8 @@ import {Component, Vue} from "vue-property-decorator"
 
 export default class extends Vue {
   private column = [
-    { type: 'selection', width: '35px'},
-    { type: 'index', label: '顺序', width: '60px' },
+    {type: 'selection', width: '35px'},
+    {type: 'index', label: '顺序', width: '60px'},
     {label: '名称', prop: 'name'},
     {label: '排序', prop: 'sort'},
     {label: '创建时间', prop: 'createtime'},
@@ -52,9 +52,9 @@ export default class extends Vue {
   ];
 
   private handleEdit(index: number, row: any) {
-    this.$drawer({
+    (this as any).$drawer({
       title: '编辑文章类型',
-      size:'50%',
+      size: '50%',
       content: () => import('./components/editType.vue'),
       contentProps: {
         title: '哈哈哈哈哈哈啊',
@@ -64,12 +64,23 @@ export default class extends Vue {
   }
 
   private handleDelete(index: number, row: any) {
-    console.log(index, row)
+    this.$confirm('确定要删除吗?', {
+      title: '文章类型删除',
+      callback: (e) => {
+        if (e) {
+          this.$message.success('添加成功')
+        } else {
+          this.$message.error('添加失败')
+        }
+      },
+    })
   }
+
   private addArticleType() {
-    this.$dialog({
+    (this as any).$dialog({
       title: '新增文章类型',
       content: () => import('./components/addType.vue'),
+      confirmDialog: () => {},
     })
   }
 }

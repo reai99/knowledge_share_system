@@ -1,16 +1,40 @@
 <template>
-  <div>
-    props传来的值: {{title}}
+  <div class="container">
+    <el-form-item
+        label="类型名称"
+    >
+      <el-input v-model="editTypeForm.typeName"/>
+    </el-form-item>
+    <el-form-item
+        label="排序"
+    >
+      <el-input v-model="editTypeForm.sort"/>
+    </el-form-item>
   </div>
 </template>
 
 <script lang="ts">
-import {Component,Prop, Vue} from "vue-property-decorator"
+import {Component, Vue} from "vue-property-decorator"
+
 @Component({
   name: "editArticleType",
 })
-export default class EditArtcleType extends Vue {
-  @Prop({ default: '内容'}) title: string
+export default class EditArticleType extends Vue {
+  private editTypeForm: ArtTypeForm = {
+    id: 0,
+    typeName: '',
+    sort: '',
+  }
+  private  getArticleTypeItem() {
+    this.editTypeForm = {
+      id: 1,
+      typeName: '测试1111',
+      sort: '666',
+    }
+  }
+  created() {
+    this.getArticleTypeItem()
+  }
 }
 
 </script>

@@ -55,14 +55,14 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue } from "vue-property-decorator";
-import { isValidUsername } from "@/utils/validate";
+import { Component, Vue } from "vue-property-decorator"
+import { isValidUsername } from "@/utils/validate"
 
 @Component({
   name: "Login",
   components: {
-    selectLang: () => import("@/common/components/SetLanguage/index.vue")
-  }
+    selectLang: () => import("@/common/components/SetLanguage/index.vue"),
+  },
 })
 export default class extends Vue {
   private selectLangStyle = {
@@ -76,7 +76,7 @@ export default class extends Vue {
     } else {
       callback()
     }
-  };
+  }
 
   private validatePassword = (rule: any, value: string, callback: Function) => {
     if (value.length < 6) {
@@ -84,7 +84,7 @@ export default class extends Vue {
     } else {
       callback()
     }
-  };
+  }
   private rules = {
     password: [{ validator: this.validatePassword, trigger: "blur" }],
     username: [{ validator: this.validateUsername, trigger: "blur" }],
@@ -97,7 +97,7 @@ export default class extends Vue {
     (this.$refs.loginForm as any).validate(valid => {
       if (valid) {
         if (!this.loginStatus) {
-          this.loginStatus = true;
+          this.loginStatus = true
         }
         (this as any).$axios.post("/api/login", this.loginForm).then(res => {
           if (res && res.ok) {
@@ -108,7 +108,7 @@ export default class extends Vue {
           } else {
             this.$message.error(res.error || "操作错误,请稍后重试")
           }
-        });
+        })
       } else {
         this.$message.error("信息验证不通过")
         return false

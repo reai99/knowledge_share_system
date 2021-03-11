@@ -2,7 +2,7 @@
 // 深克隆
 export const deepClone = (oldObj: object)  => {
   // return JSON.parse(JSON.stringify(obj))
-    let result;
+    let result
     const isType= (arg: any, type: string) =>  {
       const typeString: string = Object.prototype.toString.call(arg)
       let flag

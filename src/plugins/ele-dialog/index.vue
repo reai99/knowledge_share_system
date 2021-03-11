@@ -68,7 +68,6 @@ export default class AntdDialog extends Vue {
   @Prop({ default: () => ({}) }) contentProps!: object;
   @Prop({ default: () => ({}) }) contentEvents!: object;
 
-  private zh_CN;
   private _timer;
   private _uid;
   private visible = false;
@@ -125,7 +124,6 @@ export default class AntdDialog extends Vue {
     if (typeof this.callback === "function") {
       this.callback(val)
     }
-    console.log(this._uid)
     clearTimeout(this._timer)
     this._timer = null
     this.visible = false

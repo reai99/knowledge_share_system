@@ -114,11 +114,14 @@ export function resetRouter() {
 
 router.beforeEach((to: Route, _: Route, next: any) => {
   NProgress.start()
-  if (window.localStorage.getItem('token')) {
+  if (window.localStorage.getItem('token') && false) {
     next()
   } else {
-    if (to.name !== 'Login') {
-      router.push({ name: 'Login' })
+    // if (to.name !== 'Login') {
+    //   router.push({ name: 'Login' })
+    // }
+    if(to.name !== 'mindcreate') {
+      router.push({ name: 'mindcreate' })
     }
     next()
 

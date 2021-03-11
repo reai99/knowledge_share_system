@@ -111,7 +111,6 @@ class ImData {
   data: Mdata
   constructor(d: Data, fn: Function) {
     size = fn
-    console.log(d,11111111)
     this.data = JSON.parse(JSON.stringify(d))
     initId(this.data)
     initColor(this.data)

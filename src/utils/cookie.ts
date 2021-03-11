@@ -6,7 +6,7 @@ export default {
      * @param time 可选 默认为30天
      */
     set(name: string, value, time?: number) {
-        time = time || 30;
+        time = time || 30
         const Days = time * 24 * 60 * 60 * 1000
         const exp = new Date()
         exp.setTime(exp.getTime() + Days)

@@ -32,3 +32,10 @@ interface FlexNode {
     px: number
     py: number
 }
+
+// 文章类型表单
+interface ArtTypeForm {
+    id?: number,
+    typeName: string,
+    sort: string | number,
+}

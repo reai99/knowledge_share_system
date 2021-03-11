@@ -21,8 +21,8 @@ class TagsView extends VuexModule implements TagsViewState {
         if (this.visitedViews.some(v => v.path === view.path)) return
         this.visitedViews.push(
             Object.assign({}, view, {
-                title: view.meta.title || 'no-name'
-            })
+                title: view.meta.title || 'no-name',
+            }),
         )
     }
 

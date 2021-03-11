@@ -1,8 +1,8 @@
 import Vue from  'vue'
 import Axios from 'axios'
-import { Message } from "element-ui";
+import { Message } from "element-ui"
 // 设置请求头
-Axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+Axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded"
 
 export interface AxiosConf {
     withCredentials: boolean;
@@ -28,7 +28,7 @@ const loadding = (status) => {
 }
 
 
-const axios = Axios.create(config);
+const axios = Axios.create(config)
 
 axios.interceptors.request.use(
     config => {
@@ -37,9 +37,9 @@ axios.interceptors.request.use(
         return config
     },
     error => {
-        Message.error("请求错误!");
-        return Promise.reject(error);
-    }
+        Message.error("请求错误!")
+        return Promise.reject(error)
+    },
 )
 
 axios.interceptors.response.use(
@@ -48,8 +48,8 @@ axios.interceptors.response.use(
         return config.data
     },
     error => {
-        Message.error("服务器响应错误!");
-        return Promise.reject(error);
-    }
+        Message.error("服务器响应错误!")
+        return Promise.reject(error)
+    },
 )
 export default axios
