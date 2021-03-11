@@ -19,5 +19,8 @@ module.exports = {
     'comma-dangle': ['error', 'always-multiline'],
     'operator-linebreak': ['error', 'before'],
     semi: ['error', 'never'],
+    'no-console': "off",
+    'no-alert': "off",
+    // "indent": ["error", "never"],
   },
 }

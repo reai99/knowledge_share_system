@@ -8,19 +8,19 @@ export const deepClone = (oldObj: object)  => {
       let flag
       switch (type) {
         case "Array":
-          flag = typeString === "[object Array]";
-          break;
+          flag = typeString === "[object Array]"
+          break
         case "Date":
-          flag = typeString === "[object Date]";
-          break;
+          flag = typeString === "[object Date]"
+          break
         case "RegExp":
-          flag = typeString === "[object RegExp]";
-          break;
+          flag = typeString === "[object RegExp]"
+          break
         case "Object":
-          flag = typeString === "[object Object]";
-          break;
+          flag = typeString === "[object Object]"
+          break
         default:
-          flag = false;
+          flag = false
       }
       return flag
     }

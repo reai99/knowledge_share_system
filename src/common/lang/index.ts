@@ -20,56 +20,56 @@ import itLocale from './it'
 Vue.use(VueI18n)
 
 const messages = {
-  en: {
-    ...enLocale,
-    ...elementEnLocale
-  },
-  zh: {
-    ...zhLocale,
-    ...elementZhLocale
-  },
-  es: {
-    ...esLocale,
-    ...elementEsLocale
-  },
-  ja: {
-    ...jaLocale,
-    ...elementJaLocale
-  },
-  ko: {
-    ...koLocale,
-    ...elementKoLocale
-  },
-  it: {
-    ...itLocale
-  }
+    en: {
+        ...enLocale,
+        ...elementEnLocale,
+    },
+    zh: {
+        ...zhLocale,
+        ...elementZhLocale,
+    },
+    es: {
+        ...esLocale,
+        ...elementEsLocale,
+    },
+    ja: {
+        ...jaLocale,
+        ...elementJaLocale,
+    },
+    ko: {
+        ...koLocale,
+        ...elementKoLocale,
+    },
+    it: {
+        ...itLocale,
+    },
 }
 
 export const getLocale = () => {
-  const localLanguage = Cookies.get('lang')
-  if (localLanguage) {
-    document.documentElement.lang = localLanguage
-    return localLanguage
-  }
-
-  const language = navigator.language.toLowerCase()
-  const locales = Object.keys(messages)
-  for (const locale of locales) {
-    if (language.indexOf(locale) > -1) {
-      document.documentElement.lang = locale
-      return locale
+    const localLanguage = Cookies.get('lang')
+    if (localLanguage) {
+        document.documentElement.lang = localLanguage
+        return localLanguage
     }
-  }
 
-  // Default language is english
-  return 'en'
+    const language = navigator.language.toLowerCase()
+    const locales = Object.keys(messages)
+    for (const locale of locales) {
+        if (language.indexOf(locale) > -1) {
+            document.documentElement.lang = locale
+            return locale
+        }
+    }
+
+    // Default language is english
+    return 'en'
 }
 
 const i18n = new VueI18n({
-  locale: getLocale(),
-  fallbackLocale: 'en',
-  silentFallbackWarn: true,
-  messages
+    locale: getLocale(),
+    fallbackLocale: 'en',
+    silentFallbackWarn: true,
+    messages,
 })
 
 export default i18n
