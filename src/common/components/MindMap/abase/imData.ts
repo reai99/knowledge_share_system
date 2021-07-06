@@ -42,7 +42,7 @@ function initSize(d: Mdata) { // 初始化size
 
 function _getSource(d: Mdata) { // 返回源数据
   const { children, _children } = d
-  const nd: Data = { name: d.name }
+  const nd: Data = { name: d.name, href: d.href}
   nd.left = d.left
   if (children) {
     const { length } = children
@@ -189,7 +189,16 @@ class ImData {
       }
     }
   }
-
+  hyerlink(id: string | string[], url?: string) {
+    const arr = Array.isArray(id) ? id : [id]
+    for(let i = 0; i < arr.length; i++) {
+      const idChild = arr[i]
+      const d = this.find(idChild)
+      if(d && url) {
+        d.href = url
+      }
+    }
+  }
   del(id: string | string[]) { // 删除指定id的数据
     const arr = Array.isArray(id) ? id : [id]
     let p

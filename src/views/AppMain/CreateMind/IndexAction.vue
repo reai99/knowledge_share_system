@@ -40,17 +40,11 @@ export default class App extends Vue {
       {
         "name":"预备知识",
         "children": [
-          { "name":"HTML & CSS" },
-          { "name":"JavaScript" },
-          { "name":"DOM" },
-          { "name":"SVG" },
+          { "name":"HTML & CSS", "href": 'http://baidu.com', "description": '撒大嫂大嫂大大说分手开发的'}, 
+          { "name":"JavaScript", "href": 'http://baidu.com', "description": '撒qweqqwasdasdasdas大嫂大嫂大大说分手开发的'},
+          { "name":"DOM", "href": 'http://zreai.com', "description": '撒大嫂大嫂大大说分撒大嫂大大说手开发的'},
+          { "name":"SVG" , "description": 'asadasdasdas撒大嫂asdasdas大嫂大大说分手开发的' },
           { "name":"test" },
-        ],
-      },
-      { 
-        "name":"安装",
-        "_children": [
-          { "name": "折叠节点" },
         ],
       },
     ],
@@ -79,7 +73,12 @@ export default class App extends Vue {
     console.log('updateNodeName', ...args)
   }
   click(...args) {
-    console.log('click', ...args)
+    console.log('click', args)
+    var data = args[0]
+    if(data.href) {
+      window.open(data.href, 'blank')
+    }
+
   }
   mounted() {}
 }

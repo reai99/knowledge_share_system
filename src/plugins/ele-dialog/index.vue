@@ -27,8 +27,8 @@
         @closeDialog="closeDialog"
         ref="asyncComponent"
       />
-      <template v-if="!footer" slot="footer">
-        <div ref="DialogFooter"></div>
+      <template v-if="footer" slot="footer">
+        <div ref="DialogFooter" ></div>
       </template>
     </el-dialog>
 </template>
@@ -39,6 +39,7 @@ import { Dialog } from "element-ui"
 Vue.use(Dialog)
 
 enum Size {
+  mini =  "400px",
   size = "600px",
   medium = "800px",
   large = "1000px"
@@ -102,7 +103,7 @@ export default class AntdDialog extends Vue {
       this._timer = null
     }, 10000)
     if (!hook || typeof hook !== "function") {
-      return this.closeDialog()
+      return this.closeDialog(hook)
     }
     let result = hook()
     if (result instanceof Promise) {

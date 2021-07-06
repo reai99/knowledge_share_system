@@ -1,5 +1,6 @@
 interface Data {
     name: string
+    href?: string
     children?: Array<Data>
     _children?: Array<Data>
     left?: boolean
@@ -11,6 +12,7 @@ interface Mdata {
     color: string
     gKey: number
     size: number[]
+    href: string
     children?: Array<Mdata>
     _children?: Array<Mdata>
     left: boolean
